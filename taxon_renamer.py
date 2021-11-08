@@ -50,7 +50,7 @@ def loadTermsTableFromFile(filename):
         with open(filename, 'r') as f:
             for line in f:
                 key, value = line.strip().split()
-                terms[key] = value
+                terms[key.lower()] = value
                     
     except IOError as e:
         eprint("I/O error({0}): {1}\nWhile loading {2}".format(e.errno, e.strerror, filename))
@@ -69,7 +69,7 @@ def read_taxon_file(input_file, output_file, replace, genus=False):
                 rank_values = dict(zip(fields, taxon_matches.group(1,2,3,4,5,6,7,8,9)))
                 if genus:
                     for rank, rank_value in rank_values.items():
-                        new_value = replace.get(rank_value) 
+                        new_value = replace.get(rank_value.lower()) 
                         if new_value:
                             if new_value.endswith('a'):
                                 root = new_value[:-1] # clip off the ending 'a'
@@ -94,7 +94,7 @@ def read_taxon_file(input_file, output_file, replace, genus=False):
                             rank_values[rank] = new_value
                     
                 else:
-                    new_species = replace.get(rank_values['species_spe'], rank_values['species_spe'])
+                    new_species = replace.get(rank_values['species_spe'].lower(), rank_values['species_spe'])
                     rank_values['species_spe'] = new_species
                 output_string = rank_values['accession'] + '\t'
                 output_string += ';'.join([x[0] + '__' +  rank_values[x] for x in fields[1:-2]])
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     parser.add_argument('--version', action='version', version='%(prog)s ' + __version__)
 
     parser.add_argument('-t', '--table', help='table files', nargs="+", default=['ar_sp_name_table.txt'])
-    parser.add_argument('-i', '--input', help='input file', default='ar122_taxonomy_r202.tsv')
+    parser.add_argument('-i', '--input', help='input file', default='ar122_taxonomy.tsv')
     parser.add_argument('-o', '--output', help='output file')
     parser.add_argument('-g', '--genus', action='store_true', default=False, help='Rename genus (and higher) names')     
 
