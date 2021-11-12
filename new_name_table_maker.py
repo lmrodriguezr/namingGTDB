@@ -1,18 +1,25 @@
 #!/usr/bin/env python3
 """
-name_table_maker combines all opening word-components with all final word-components
+name_table_maker creates name replacement tables, matching GTDB alphanumeric placeholders with well-formed Latinate names
 
-A program to combine all opening word-components with all final word-components in 
-the bacterial_genus_endings.txt, archaeal_genus_endings.txt and species_endings.txt 
-files to create the output files bacterial_genus_names.txt, archaeal_genus_endings.txt 
-and species_names.txt. The script then excluded genus names already been used in 
-taxonomy by searching against the file GBIF_clean.txt, which contains a set of unique 
-genus names compiled by the Global Biodiversity Information Facility.  
+A program to create name replacement tables, matching GTDB alphanumeric placeholders with well-formed Latinate names, ensuring that simpler shorter names are preferred fro higher-level taxa
 
 USAGE:
-    python3 4_name_table_maker.py 
+    python3 name_table_maker.py [options] -g -t  <GTDB-taxonomy_file-tsv> -i <input_names_file> -o <output-file-text>
 
-Needs as inputs in same directory:
+Where:
+
+-t, --taxonomy_file, specifies as input a GTDB taxonomy file, either ar122_taxonomy.tsv or bac120_taxonomy.tsv
+-g, --genus, an option that specifies that names are formatted as genus names   
+-i, --input_names_file, specifies as input file a list of arbitrary Latinate names, typically created by name_creator.py or from names unused in a previous round of name table creation
+-o, --output_prefix, specifies the output file name, default is a name built from combining components of the names of the inout files 
+
+
+Examples:
+    python3 name_table_maker.py -g -t ar122_taxonomy.tsv -i ar_genus_names.txt
+    python3 name_table_maker.py -g -t bac120_taxonomy.tsv -i bac_genus_names.txt 
+    python3 name_table_maker.py -t ar122_taxonomy.tsv -i species_names.txt 
+    python3 name_table_maker.py -t bac120_taxonomy.tsv -i unused_names_after_creating_ar122_species_names_table.txt
 
 """
 
@@ -78,13 +85,13 @@ def main(args):
                     # This dictionary gives easy access to the value for each rank. e.g.  rank_values['order']
                     if args.genus: 
                         if re.findall('\d|-', rank_values[field_name]):
-                            if rank_values[field_name] not in taxa_names:
+                            if rank_values[field_name].lower() not in [x.lower() for x in taxa_names]:
                                 taxa_names.append(rank_values[field_name])
                     else:
                         # Handles species renaming.
                         species_name = rank_values['species_spe']
                         if containsNumber(species_name): # species name should be sp[0-9] or something like that. 
-                            if species_names.get(species_name): # If alpha nums has the name already, just increment the dictionary value (a counter)
+                            if species_name.lower() in [x.lower() for x in species_names]: # If alpha nums has the name already, just increment the dictionary value (a counter)
                                 species_names[species_name] += 1 
                             else: # Otherwise, add the name to the dictionary, count = 1. 
                                 species_names[species_name] = 1                        
