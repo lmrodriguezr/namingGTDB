@@ -14,11 +14,12 @@ GTDB_renamer.sh provides a full worked example of running order of all the scrip
 
 ## Input files
 Input files for this study were obtained from the following sources
-•	Whitaker's Latin stems: http://archives.nd.edu/whitaker/wordsall.zip 
-•	English Wiktionary headwords: 2021 from https://dumps.wikimedia.org/enwiktionary/20210920/enwiktionary-20210920-pages-articles-multistream-index.txt.bz2 
-•	genus names compiled by Global Biodiversity Information Facility: https://hosted-datasets.gbif.org/datasets/backbone/backbone-current-simple.txt.gz
-•	GDTB metadata and taxonomy files: https://data.gtdb.ecogenomic.org/releases/release202/202.0/
-•	ar_genus_endings.txt, bac_genus_endings.txt and species_endings.txt files from https://zenodo.org/deposit/5652886 
+
+* Whitaker's Latin stems: http://archives.nd.edu/whitaker/wordsall.zip 
+* English Wiktionary headwords: 2021 from https://dumps.wikimedia.org/enwiktionary/20210920/enwiktionary-20210920-pages-articles-multistream-index.txt.bz2 
+* genus names compiled by Global Biodiversity Information Facility: https://hosted-datasets.gbif.org/datasets/backbone/backbone-current-simple.txt.gz
+* GDTB metadata and taxonomy files: https://data.gtdb.ecogenomic.org/releases/release202/202.0/
+* ar_genus_endings.txt, bac_genus_endings.txt and species_endings.txt files from https://zenodo.org/deposit/5652886 
 
 
 ## Contributing
