@@ -90,15 +90,23 @@ def main(args):
                                 species_names[species_name] = 1                        
     if not args.genus: 
         # This is to create a list (sorted by frequency) for species mode (only). 
-        taxa_names = [alphanum for alphanum, alphanum_freq in sorted(species_names.items(), key=lambda item: item[1], reverse=True)] 
-    
-    gen_names = [x.strip() for x in open(input_names_path) ]                            
+        taxa_names = [alphanum for alphanum, alphanum_freq in sorted(species_names.items(), key=lambda item: item[1], reverse=True)]
+        
+        
+    gen_names = [x.strip() for x in open(input_names_path) ]
+
+
     with open(final_names_path, 'w') as file3:
-        count = 0 # counter to step through the gen_names list as we go through taxa_names. 
+        count = 0 # counter to step through the gen_names list as we go through taxa_names.
+        
         for name in taxa_names:
-            print(name.strip(),'!' + gen_names[count], file=file3)
-            count += 1 # If there's more taxa_names values than genus names, this code will crash
-        with open(unused_names_path, 'w') as unused_out:  # Write out unused names. 
+            if args.genus: 
+                print(name.strip(),'!' + gen_names[count].title(), file=file3)
+                count += 1 # If there's more taxa_names values than genus names, this code will crash
+            else:
+                print(name.strip(),'!' + gen_names[count], file=file3)
+                count += 1 # If there's more taxa_names values than genus names, this code will crash
+        with open(unused_names_path, 'w') as unused_out:  # Write out unused names.
             unused_out.write('\n'.join(gen_names[count:] ))                     
 
 if __name__ == '__main__':

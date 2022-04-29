@@ -78,7 +78,7 @@ def read_taxon_file(input_file, output_file, replace, genus=False):
                                 if rank == 'order':
                                     new_value = root + 'ales!'
                                 if rank == 'class':
-                                    new_value = root + 'ae!'
+                                    new_value = root + 'ia!'
                                 if rank == 'phylum':
                                     new_value = root + 'ota!'
                             elif new_value.endswith('um'):
@@ -88,7 +88,7 @@ def read_taxon_file(input_file, output_file, replace, genus=False):
                                 if rank == 'order':
                                     new_value = root + 'ales!'
                                 if rank == 'class':
-                                    new_value = root + 'a!'
+                                    new_value = root + 'ia!'
                                 if rank == 'phylum':
                                     new_value = root + 'ota!'   
                             rank_values[rank] = new_value
