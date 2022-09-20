@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+authors:
+- family-names: "Pallen"
+  given-names: "Mark J."
+  orcid: "https://orcid.org/0000-0003-1807-3657"
+- family-names: "Rodriguez-R"
+  given-names: "Luis M."
+  orcid: "https://orcid.org/0000-0001-7603-3093"
+- family-names: "Alikhan"
+  given-names: "Nabil-Fareed"
+  orcid: "https://orcid.org/0000-0002-1243-0767"  
+  
+title: "Naming the unnamed: over 65,000 Candidatus names for unnamed Archaea and Bacteria in the Genome Taxonomy Database"
+version: 1.0.0
+doi: 10.1099/ijsem.0.005482
+date-released: 2022-09-20
+url: "https://www.microbiologyresearch.org/content/journal/ijsem/10.1099/ijsem.0.005482
