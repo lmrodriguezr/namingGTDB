@@ -24,6 +24,13 @@ Input files for this study were obtained from the following sources
 - GDTB metadata and taxonomy files: https://data.gtdb.ecogenomic.org/releases/release202/202.0/
 - ar_genus_endings.txt, bac_genus_endings.txt and species_endings.txt files from https://zenodo.org/deposit/5652886
 
+## Citation 
+
+Please cite: 
+
+Pallen MJ, Rodriguez-R LM, Alikhan N-F. Naming the unnamed: over 65,000 Candidatus names for unnamed Archaea and Bacteria in the Genome Taxonomy Database. International Journal of Systematic and Evolutionary Microbiology. Microbiology Society; 2022. doi:https://doi.org/10.1099/ijsem.0.005482
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
