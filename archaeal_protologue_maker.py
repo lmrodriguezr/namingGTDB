@@ -78,7 +78,7 @@ sortedfile = sorted(file, key=lambda file: file[0].split('\t')[7].replace("!", "
 sortedfile = sorted(sortedfile, key=lambda file: file[0].split('\t')[5].replace("!", ""))
 
 ##opens the protologues file to be written to, with the .rtf extension and writes a header to make the file Rich Text Format
-protologues = open("archaeal_protologues.rtf", "w")
+protologues = open("archaeal_protologues_for_classes.rtf", "w")
 protologues.write("{\\rtf1")
 protologues.write("\n")
 
@@ -156,7 +156,7 @@ for current_line_tabs in sortedfile:
           if current_line[4] not in previous_line[4]:
             print \
             ("\\pard \\sa120 \\b Description of \i {\doccomm newname_4}Candidatus \i0" + current_line[4].replace("f__", "").replace("!", ""), "fam. nov.{\doccomm 4_newname} \\b0 \\par", \
-            "\\pard \\sa120 \i Candidatus \i0", current_line[4].replace("!", "").replace("f__", ""), "(N.L. fem. n. \i", current_line[4].replace("!", "").replace("f__", ""),\
+            "\\pard \\sa120 \i Candidatus \i0", current_line[4].replace("!", "").replace("f__", ""), "(N.L. fem. pl. n. \i", current_line[4].replace("!", "").replace("f__", ""),\
             "\i0 a name created from the name of the type genus by addition of an appropriate suffix). \\par", \
             "\\pard \\sa120 A taxon identified and delineated according to the algorithms of the Genome Taxonomy Database (GTDB) Release R207."\
             " The GTDB alphanumeric placeholder designation for this taxon is {\doccomm oldname_4}" +  \
@@ -173,7 +173,7 @@ for current_line_tabs in sortedfile:
          if current_line[3] not in previous_line[3]:
             print \
             ("\\pard \\sa120 \\b Description of \i {\doccomm newname_3}Candidatus \i0" + current_line[3].replace("o__", "").replace("!", ""), "ord. nov.{\doccomm 3_newname} \\b0 \\par", \
-            "\\pard \\sa120 \i Candidatus \i0", current_line[3].replace("!", "").replace("o__", ""), "(N.L. fem. n. \i", current_line[3].replace("!", "").replace("o__", ""),\
+            "\\pard \\sa120 \i Candidatus \i0", current_line[3].replace("!", "").replace("o__", ""), "(N.L. fem. pl. n. \i", current_line[3].replace("!", "").replace("o__", ""),\
             "\i0 a name created from the name of the type genus by addition of the appropriate suffix). \\par", \
             "\\pard \\sa120 A taxon identified and delineated according to the algorithms of the Genome Taxonomy Database (GTDB) Release R207."\
             " The GTDB alphanumeric placeholder designation for this taxon is {\doccomm oldname_3}" +  \
@@ -186,17 +186,17 @@ for current_line_tabs in sortedfile:
 
   ## outputs a protologue for a newly named class
   if "!" in current_line[2]: 
-      if current_line[2].replace("c__", "").replace("ae!", "a") in current_line[5].replace("g__", ""): 
+      if current_line[2].replace("c__", "").replace("ia!", "a") in current_line[5].replace("g__", ""): 
         if current_line[2] not in previous_line[2]:
             print \
             ("\\pard \\sa120 \\b Description of \i {\doccomm newname_2}Candidatus \i0" + current_line[2].replace("c__", "").replace("!", ""), "class. nov.{\doccomm 2_newname} \\b0 \\par", \
-            "\\pard \\sa120 \i Candidatus \i0", current_line[2].replace("!", "").replace("c__", ""), "(N.L. fem. n. \i", current_line[2].replace("!", "").replace("o__", ""),\
+            "\\pard \\sa120 \i Candidatus \i0", current_line[2].replace("!", "").replace("c__", ""), "(N.L. neut. pl. n. \i", current_line[2].replace("!", "").replace("c__", ""),\
             "\i0 a name created from the name of the type genus by addition of the appropriate suffix). \\par", \
             "\\pard \\sa120 A taxon identified and delineated according to the algorithms of the Genome Taxonomy Database (GTDB) Release R207."\
             " The GTDB alphanumeric placeholder designation for this taxon is {\doccomm oldname_2}" +  \
             current_line[10].replace("c__", "") + \
-            "{\doccomm 2_oldname}.  The type genus for the taxon is \i Candidatus \i0" + \
-            current_line[5].replace("g__", "").replace("!", "") + ".\\par"\
+            "{\doccomm 2_oldname}.  The type order for the taxon is \i Candidatus \i0" + \
+            current_line[3].replace("o__", "").replace("!", "") + ".\\par"\
             "\\pard \\sa480 According to the renamed version of GTDB Release R207, this class belongs to the phylum \i " + current_line[1].replace("p__", "").replace("!","") + \
             "\i0. \\par",\
             file=protologues)
@@ -207,7 +207,7 @@ for current_line_tabs in sortedfile:
        if current_line[1] not in previous_line[1]:
           print \
           ("\\pard \\sa120 \\b Description of \i {\doccomm newname_1}Candidatus \i0" + current_line[1].replace("p__", "").replace("!", ""), "phyl. nov.{\doccomm 1_newname} \\b0 \\par", \
-          "\\pard \\sa120 \i Candidatus \i0", current_line[1].replace("!", "").replace("p__", ""), "(N.L. fem. n. \i", current_line[1].replace("!", "").replace("p__", ""),\
+          "\\pard \\sa120 \i Candidatus \i0", current_line[1].replace("!", "").replace("p__", ""), "(N.L. neut. pl. n. \i", current_line[1].replace("!", "").replace("p__", ""),\
           "\i0 a name created from the name of the type genus by addition of the appropriate suffix). \\par", \
           "\\pard \\sa120 A taxon identified and delineated according to the algorithms of the Genome Taxonomy Database (GTDB) Release R207."\
           " The GTDB alphanumeric placeholder designation for this taxon is {\doccomm oldname_1}" +  \

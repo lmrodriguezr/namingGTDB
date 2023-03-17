@@ -24,12 +24,11 @@ Input files for this study were obtained from the following sources
 - GDTB metadata and taxonomy files: https://data.gtdb.ecogenomic.org/releases/release202/202.0/
 - ar_genus_endings.txt, bac_genus_endings.txt and species_endings.txt files from https://zenodo.org/deposit/5652886
 
-## Citation 
+## Citation
 
-Please cite: 
+Please cite:
 
 Pallen MJ, Rodriguez-R LM, Alikhan N-F. Naming the unnamed: over 65,000 Candidatus names for unnamed Archaea and Bacteria in the Genome Taxonomy Database. International Journal of Systematic and Evolutionary Microbiology. Microbiology Society; 2022. doi:https://doi.org/10.1099/ijsem.0.005482
-
 
 ## Contributing
 
@@ -38,3 +37,15 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 [GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
+## CHANGE LOG
+
+**17/03/2023**
+
+An error in the Python scripts used to generate the protologues presented as supplementary material in the paper by Pallen et al (2022) meant that names for the rank of class were not included. Updated scripts have been uploaded that correct this problem and allow generation of protologues for all ranks. See:
+
+- [archaeal_protologue_maker.py](archaeal_protologue_maker.py)
+- [bacterial_protologue_maker.py](bacterial_protologue_maker.py)
+- [build_protologues_from_named_genera.py](build_protologues_from_named_genera.py)
+
+In addition, we have created [scripts that create protologues only for taxa at the rank of class](classes_only/), which have been used to create additional supplementary files for a corrigendum to the paper that includes new names for classes

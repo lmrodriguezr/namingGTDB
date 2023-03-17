@@ -74,7 +74,7 @@ sortedfile = sorted(file)
 sortedfile = sorted(sortedfile, key=lambda file: file[0].split('\t')[5].replace("@", ""))
 
 ##opens the protologues file to be written to, with the .rtf extension and writes a header to make the file Rich Text Format
-protologues = open("protologues_built_from_named_genera.rtf", "w")
+protologues = open("protologues_built_from_named_genera_for_classes.rtf", "w")
 protologues.write("{\\rtf1")
 protologues.write("\n")
 
@@ -158,11 +158,11 @@ for current_line_tabs in sortedfile:
              "\i0.\\par",\
             file=protologues)
             
-## outputs a protologue for a newly named class
+ ## outputs a protologue for a newly named class
   if "@" in current_line[2]:
-    target = current_line[2].replace("c__", "g__").replace("ia@", "").replace("ia|", "").replace("|", "")
+    target = current_line[2].replace("c__", "g__").replace("ia", "").replace("@", "").replace("|", "").replace("|", "")
     target = target.rstrip(target[-1])
-    if (target in current_line[5]) and ("_"  in current_line[5].replace("__", "")) and (current_line[5] not in previous_line[5]):
+    if (target in current_line[5]) and ("_" not in current_line[5].replace("__", "")) and (current_line[5] not in previous_line[5]):
         if "|" in current_line[2]:
           ##marker shows this is a Candidatus name    
             print \
@@ -172,7 +172,7 @@ for current_line_tabs in sortedfile:
             "\i0 a name created from the name of the type genus by addition of an appropriate suffix).\\par", \
             "\\pard \\sa120 A taxon identified and delineated according to the algorithms of the Genome Taxonomy Database (GTDB) release R207.",\
              "The GTDB placeholder designation for this taxon is " +  \
-            current_line[1].replace("c__", "") + \
+            current_line[10].replace("c__", "") + \
             ". The type genus for the taxon is \i Candidatus \i0",\
             current_line[5].replace("g__", "").replace("@", "").replace("|", "") + ".\\par"\
             "\\pard \\sa480 According to the renamed version of GTDB release R207, this taxon belongs to the higher-level taxon \i " + current_line[1].replace("p__", "").replace("@", "").replace("|", "") + \
@@ -181,7 +181,7 @@ for current_line_tabs in sortedfile:
 
         else:
           ##is not a Candidatus name             
-            print \
+            print  \
             ("\\pard \\sa120 \\b Description of \i " + current_line[2].replace("c__", "").replace("@", "").replace("|", ""), "\i0 class nov. \\b0 \\par", \
             "\\pard \\sa120\i", current_line[2].replace("@", "").replace("|", "").replace("c__", ""),\
             "\i0(N.L. neut. pl. pl. n. \i", current_line[2].replace("@", "").replace("|", "").replace("c__", ""),\
@@ -198,7 +198,7 @@ for current_line_tabs in sortedfile:
 
 ## outputs a protologue for a newly named phylum
   if "@" in current_line[1]:
-    target = current_line[1].replace("p__", "g__").replace("ota@", "").replace("ota|", "").replace("|", "").replace("@", "")
+    target = current_line[1].replace("p__", "g__").replace("ota", "").replace("@", "").replace("|", "").replace("|", "")
     target = target.rstrip(target[-1])
     if (target in current_line[5]) and ("_" not in current_line[5].replace("__","")) and (current_line[5] not in previous_line[5]):
         if "|" in current_line[1]:
